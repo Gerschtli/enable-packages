@@ -1,0 +1,32 @@
+{
+  "name": "enable-packages",
+  "main": "./lib/enable-packages",
+  "version": "0.1.0",
+  "description": "Enable packages via package manager",
+  "keywords": [
+  ],
+  "repository": "https://github.com/Gerschtli/enable-packages",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "consumedServices": {
+    "project-manager": {
+      "versions": {
+        "^3.1.0": "setProjectManagerService"
+      }
+    }
+  },
+  "package-deps": [
+    "project-manager"
+  ],
+  "scripts": {
+    "test": "apm test && ./node_modules/.bin/eslint lib/** spec/**"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.0.0",
+    "eslint": "^3.8.0",
+    "eslint-config-airbnb-base": "^9.0.0",
+    "eslint-plugin-import": "^2.0.1"
+  }
+}
