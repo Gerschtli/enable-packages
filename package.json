@@ -2,7 +2,7 @@
   "name": "enable-packages",
   "main": "./lib/enable-packages",
   "version": "0.1.0",
-  "description": "Enable packages via package manager",
+  "description": "Enable packages via project manager",
   "keywords": [
   ],
   "repository": "https://github.com/Gerschtli/enable-packages",
