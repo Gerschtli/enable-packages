@@ -1,4 +1,4 @@
-# enable-packages
+# enable-packages [![Travis CI](https://img.shields.io/travis/Gerschtli/enable-packages.svg?style=flat-square)](https://travis-ci.org/Gerschtli/enable-packages) [![apm](https://img.shields.io/apm/v/enable-packages.svg?style=flat-square)](https://atom.io/packages/enable-packages) [![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](http://opensource.org/licenses/MIT)
 
 An [atom](https://atom.io/) package for enabling packages via the
 [project manager](https://atom.io/packages/project-manager).
