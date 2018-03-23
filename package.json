@@ -1,7 +1,7 @@
 {
   "name": "enable-packages",
   "main": "./lib/enable-packages",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "author": {
     "name": "Tobias Happ",
     "email": "tobias.happ@gmx.de"
