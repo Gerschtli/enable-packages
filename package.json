@@ -2,8 +2,17 @@
   "name": "enable-packages",
   "main": "./lib/enable-packages",
   "version": "1.1.1",
+  "author": {
+    "name": "Tobias Happ",
+    "email": "tobias.happ@gmx.de"
+  },
   "description": "Enable packages via project manager",
-  "keywords": [],
+  "keywords": [
+    "enable-packages",
+    "disable-packages",
+    "project-manager",
+    "package-management"
+  ],
   "repository": "https://github.com/Gerschtli/enable-packages",
   "license": "MIT",
   "engines": {
