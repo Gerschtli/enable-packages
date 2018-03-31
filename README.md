@@ -48,6 +48,6 @@ For example:
 ]
 ```
 
-The disabled packages will saved in `core.disabledPackages` in `~/.atom/config.cson`.
-If you share your config, be sure to close atom before beforehand, so that all optional packages are listed under the
-disabled packages section to minimize startup time, when opening another project.
+The disabled packages will be saved in `core.disabledPackages` in `~/.atom/config.cson`.
+If you share your config, be sure to close atom beforehand, so that all optional packages are listed under the
+disabled packages section to minimize startup time when opening another project.
