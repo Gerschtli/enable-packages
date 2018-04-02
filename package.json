@@ -29,7 +29,8 @@
     "project-manager"
   ],
   "scripts": {
-    "test": "apm test && ./node_modules/.bin/eslint lib/** spec/**"
+    "lint": "eslint lib/** spec/**",
+    "test": "npm run lint && apm test"
   },
   "devDependencies": {
     "babel-eslint": "^7.0.0",
