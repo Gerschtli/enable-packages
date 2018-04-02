@@ -19,6 +19,7 @@ describe('enable-packages', () => {
     waitsForPromise(() => atom.packages.activatePackage('enable-packages'));
 
     runs(() => {
+      expect(EnablePackages.optionalPackages).toEqual(['tree-view', 'whitespace']);
       expect(atom.packages.isPackageDisabled('tree-view')).toBe(true);
       expect(atom.packages.isPackageDisabled('whitespace')).toBe(true);
 
@@ -33,6 +34,24 @@ describe('enable-packages', () => {
       expect(detailNodes.length).toBe(2);
       expect(detailNodes[0].textContent.trim()).toBe('tree-view');
       expect(detailNodes[1].textContent.trim()).toBe('whitespace');
+    });
+  });
+
+  it('does nothing on activate if resetOnStart is false', () => {
+    atom.config.set('enable-packages.optionalPackages', ['tree-view', 'whitespace']);
+    atom.config.set('enable-packages.resetOnStart', false);
+    expect(atom.packages.isPackageDisabled('tree-view')).toBe(false);
+    expect(atom.packages.isPackageDisabled('whitespace')).toBe(false);
+
+    waitsForPromise(() => atom.packages.activatePackage('enable-packages'));
+
+    runs(() => {
+      expect(EnablePackages.optionalPackages).toEqual(['tree-view', 'whitespace']);
+      expect(atom.packages.isPackageDisabled('tree-view')).toBe(false);
+      expect(atom.packages.isPackageDisabled('whitespace')).toBe(false);
+
+      const notificationContainer = view.querySelector('atom-notifications');
+      expect(notificationContainer.childNodes.length).toBe(0);
     });
   });
 
