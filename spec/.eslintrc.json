@@ -1,8 +1,8 @@
 {
   "env": {
-   "jasmine": true
- },
- "globals": {
-   "waitsForPromise": true
- }
+    "jasmine": true
+  },
+  "globals": {
+    "waitsForPromise": true
+  }
 }
