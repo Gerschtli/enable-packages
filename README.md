@@ -5,8 +5,8 @@ An [atom](https://atom.io/) package for enabling packages via the
 
 ## Usage
 
-Add all packages, which you want to enable per project, in the list of `optionalPackages` in your `~/.atom/config.cson`
-like:
+Add all packages, which you want to enable per project, in the list of optional packages in the package config or
+manually in the list of `enable-packages.optionalPackages` in your `~/.atom/config.cson` like:
 ```cson
 "*":
   "enable-packages":
@@ -16,9 +16,13 @@ like:
     ]
 ```
 
-Then edit your `~/.atom/projects.cson` (from the project manager package) to add the packages, you want to enable.
+Additionally you can set whether to disable all optional packages by default on atom start before reading the enabled
+packages of the current project.
+Prevents useless disabling and enabling of the same packages on atom start with the tradeoff that, if atom starts with
+a folder not configured as project in the project manager, optional packages could be still enabled.
+If project manager is heavily used for every project, it is safe to disable this option.
 
-For example:
+Then edit your `~/.atom/projects.cson` (from the project manager package) to add the packages, you want to enable, for example:
 ```cson
 [
   {
@@ -49,5 +53,5 @@ For example:
 ```
 
 The disabled packages will be saved in `core.disabledPackages` in `~/.atom/config.cson`.
-If you share your config, be sure to close atom beforehand, so that all optional packages are listed under the
-disabled packages section to minimize startup time when opening another project.
+If you share your config, be sure to close atom beforehand, so that all optional packages are listed under the disabled
+packages section to minimize startup time when opening another project.
