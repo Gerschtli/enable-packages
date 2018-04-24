@@ -155,5 +155,91 @@ describe('enable-packages', () => {
         expect(atom.packages.isPackageDisabled('whitespace')).toBe(true);
       });
     });
+
+    it('disables all optional packages and restores it', () => {
+      const notificationContainer = view.querySelector('atom-notifications');
+
+      const projectManager = {
+        onProjectChange: null,
+        getProject(callback) {
+          this.onProjectChange = callback;
+        },
+      };
+
+      const workspaceElement = atom.views.getView(atom.workspace);
+
+      EnablePackages.setProjectManagerService(projectManager);
+
+        // clear notifications
+      notificationContainer.childNodes.forEach((x) => {
+        notificationContainer.removeChild(x);
+      });
+
+      const project = {
+        getProps() {
+          return {
+            enable_packages: ['about'],
+          };
+        },
+      };
+
+      (projectManager.onProjectChange)(project);
+
+      expect(atom.packages.isPackageDisabled('about')).toBe(false);
+      expect(atom.packages.isPackageDisabled('tree-view')).toBe(true);
+      expect(atom.packages.isPackageDisabled('whitespace')).toBe(true);
+
+      expect(notificationContainer.childNodes.length).toBe(1);
+
+      let notification = notificationContainer.querySelector('atom-notification.success');
+      expect(notification).toHaveClass('success');
+      expect(notification.querySelector('.message').textContent.trim()).toBe('Packages enabled');
+
+      let detailNodes = notification.querySelector('.detail-content').childNodes;
+      expect(detailNodes.length).toBe(1);
+      expect(detailNodes[0].textContent.trim()).toBe('about');
+
+      // clear notifications
+      notificationContainer.childNodes.forEach((x) => {
+        notificationContainer.removeChild(x);
+      });
+
+      atom.commands.dispatch(workspaceElement, 'enable-packages:disable-optionals');
+
+      expect(atom.packages.isPackageDisabled('about')).toBe(true);
+      expect(atom.packages.isPackageDisabled('tree-view')).toBe(true);
+      expect(atom.packages.isPackageDisabled('whitespace')).toBe(true);
+
+      expect(notificationContainer.childNodes.length).toBe(1);
+
+      notification = notificationContainer.querySelector('atom-notification.success');
+      expect(notification).toHaveClass('success');
+      expect(notification.querySelector('.message').textContent.trim()).toBe('Packages disabled');
+
+      detailNodes = notification.querySelector('.detail-content').childNodes;
+      expect(detailNodes.length).toBe(1);
+      expect(detailNodes[0].textContent.trim()).toBe('about');
+
+      // clear notifications
+      notificationContainer.childNodes.forEach((x) => {
+        notificationContainer.removeChild(x);
+      });
+
+      atom.commands.dispatch(workspaceElement, 'enable-packages:restore');
+
+      expect(atom.packages.isPackageDisabled('about')).toBe(false);
+      expect(atom.packages.isPackageDisabled('tree-view')).toBe(true);
+      expect(atom.packages.isPackageDisabled('whitespace')).toBe(true);
+
+      expect(notificationContainer.childNodes.length).toBe(1);
+
+      notification = notificationContainer.querySelector('atom-notification.success');
+      expect(notification).toHaveClass('success');
+      expect(notification.querySelector('.message').textContent.trim()).toBe('Packages enabled');
+
+      detailNodes = notification.querySelector('.detail-content').childNodes;
+      expect(detailNodes.length).toBe(1);
+      expect(detailNodes[0].textContent.trim()).toBe('about');
+    });
   });
 });

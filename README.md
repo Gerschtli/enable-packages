@@ -53,5 +53,8 @@ Then edit your `~/.atom/projects.cson` (from the project manager package) to add
 ```
 
 The disabled packages will be saved in `core.disabledPackages` in `~/.atom/config.cson`.
-If you share your config, be sure to close atom beforehand, so that all optional packages are listed under the disabled
-packages section to minimize startup time when opening another project.
+
+### Commands
+
+ - __enable-packages:disable-optionals__: Disables all optional packages
+ - __enable-packages:restore__: Restores all packages of current project
