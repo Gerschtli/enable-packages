@@ -1,8 +1,6 @@
 with import <nixpkgs> { };
 
-stdenv.mkDerivation {
-  name = "enable-packages";
-
+mkShell {
   buildInputs = [
     nodejs
   ];
