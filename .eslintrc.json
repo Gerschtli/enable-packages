@@ -9,9 +9,12 @@
     "atom": true
   },
   "rules": {
+    "import/no-cycle": 0,
     "global-require": 0
   },
   "settings": {
-    "import/core-modules": ["atom"]
+    "import/core-modules": [
+      "atom"
+    ]
   }
 }
