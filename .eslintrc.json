@@ -9,7 +9,6 @@
     "atom": true
   },
   "rules": {
-    "import/no-cycle": 0,
     "global-require": 0
   },
   "settings": {
