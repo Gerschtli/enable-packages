@@ -29,7 +29,8 @@
     "project-manager"
   ],
   "scripts": {
-    "lint": "eslint lib/** spec/**",
+    "fix": "eslint lib spec --fix",
+    "lint": "eslint lib spec",
     "test": "npm run lint && apm test"
   },
   "devDependencies": {
