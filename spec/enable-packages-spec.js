@@ -170,7 +170,7 @@ describe('enable-packages', () => {
 
       EnablePackages.setProjectManagerService(projectManager);
 
-        // clear notifications
+      // clear notifications
       notificationContainer.childNodes.forEach((x) => {
         notificationContainer.removeChild(x);
       });
